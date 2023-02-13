@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<div class="row container-fluid">
+
+  <div class="col-lg-5">
+    
+    <app-clientes-crear 
+      (clienteCreado)="receiveMessageFromCreate($event)" 
+      (clienteActualizado)="receiveMessageFromEdit($event)" 
+      [clienteEditado]="clienteEditado">
+    </app-clientes-crear>
+  </div>
+
+  <div class="col-lg-7 mt-3">
+
+    <div class="float-right">
+    Existen {{ clientes.length }} elementos
+    </div>
+    <br>
+
+    
+    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="clientes.length > 0">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes ">
+          <td>{{ cliente.nombre  }}</td>
+          <td>{{ cliente.apellido }}</td>
+          <td>
+            <button type="button" (click)='editCliente(cliente)' class="btn btn-sm btn-primary mr-1">Editar</button>
+            <button type="button" (click)='deleteCliente(cliente.id)' class="btn btn-sm btn-secondary">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+</div>
