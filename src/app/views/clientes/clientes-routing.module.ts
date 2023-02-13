@@ -4,9 +4,6 @@ import { ClientesListaComponent } from './clientes-lista/clientes-lista.componen
 
 const routes: Routes = [
   { path: 'lista', component: ClientesListaComponent},
-//   { path: 'Nuevo', component: VinoNuevoComponent},
-//   { path: 'Detalle/:id', component: VinoDetalleComponent,
-//     canActivate: [AuthGuard], resolve: { stock: VinoLoadResolverService } },
 ];
 
 @NgModule({

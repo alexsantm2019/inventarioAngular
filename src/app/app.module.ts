@@ -31,6 +31,5 @@ import { FooterComponent } from './views/footer/footer.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  // exports: [NavbarComponent],
 })
 export class AppModule { }
