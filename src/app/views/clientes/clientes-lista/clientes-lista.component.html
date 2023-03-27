@@ -2,7 +2,7 @@
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-<div class="row container-fluid">
+<div class="row container-fluid mb-4">
 
   <div class="col-lg-5">
     
@@ -21,16 +21,16 @@
     <br>
 
     
-    <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="clientes.length > 0">
+    <table class='table table-striped table-hover table-sm' aria-labelledby="tableLabel" *ngIf="clientes.length > 0">
       <thead>
-        <tr>
-          <th>Nombre</th>
+        <tr class="text-center">
+          <th >Nombre</th>
           <th>Apellido</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cliente of clientes ">
+        <tr *ngFor="let cliente of clientes " class="text-center">
           <td>{{ cliente.nombre  }}</td>
           <td>{{ cliente.apellido }}</td>
           <td>
@@ -40,7 +40,6 @@
         </tr>
       </tbody>
     </table>
-
 
   </div>
 

@@ -38,10 +38,12 @@ export class OrdenesCrearComponent {
       this.editMode = true;
       this.createMode = false;
       this.setOrdenToEdit(this.ordenEditada);
+      this.message = "";
     }else{
       console.log("2. Modo crear ON")
       this.editMode = false;
       this.createMode = true;
+      this.message = "";
     }
 }
 
@@ -63,11 +65,15 @@ export class OrdenesCrearComponent {
 
   setOrdenToEdit(ordenEditada: Orden){
     this.ordenIdEditado = ordenEditada.id;
-    this.orden = this.formBuilder.group({
-      fecha: ordenEditada.fecha,
-      codigo: ordenEditada.codigo,
-      clienteId: ordenEditada.clienteId,
-    });
+    // this.orden = this.formBuilder.group({
+    //   fecha: ordenEditada.fecha,
+    //   codigo: ordenEditada.codigo,
+    //   clienteId: ordenEditada.clienteId,
+    // });
+
+    this.orden.controls['fecha'].patchValue(ordenEditada.fecha);
+    this.orden.controls['codigo'].patchValue(ordenEditada.codigo);
+    this.orden.controls['clienteId'].patchValue(ordenEditada.clienteId);
   }
 
   createForm() {

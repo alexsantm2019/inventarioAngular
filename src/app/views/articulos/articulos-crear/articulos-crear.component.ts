@@ -41,10 +41,12 @@ export class ArticulosCrearComponent {
       this.editMode = true;
       this.createMode = false;
       this.setArticuloToEdit(this.articuloEditado);
+      this.message = "";
     }else{
       console.log("2. Modo crear ON")
       this.editMode = false;
       this.createMode = true;
+      this.message = "";
     }
 }
 

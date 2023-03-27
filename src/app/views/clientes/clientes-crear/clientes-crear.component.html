@@ -8,39 +8,8 @@
       <h3 class="text-center" *ngIf="createMode">Ingreso de nuevo cliente</h3>
       <h3 class="text-center" *ngIf="editMode">Editar cliente</h3>
       <h5 class="text-success text-center">{{message}}</h5>
-
-      <form [formGroup]="cliente" (ngSubmit)="createCliente()" *ngIf="createMode">
-
-        <div class="form-group">
-          <label for="exampleInputEmail1">Nombre:</label>
-          <input type="text" maxlength="25" required class="form-control" id="nombre" name="nombre"
-            aria-describedby="name" placeholder="Ingrese nombre" formControlName="nombre">
-
-          <div *ngIf="f['nombre']?.touched && f['nombre']?.invalid" class="alert alert-danger">
-            <div *ngIf="f['nombre'].errors?.['required']">Nombre es requerido</div>
-          </div>
-          <small class="text-success" *ngIf="f['nombre'].valid">Correct</small>
-
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputEmail1">Apellido:</label>
-          <input type="text" maxlength="25" required class="form-control" id="apellido" name="apellido"
-            aria-describedby="name" placeholder="Ingrese apellido" formControlName="apellido">
-
-          <div *ngIf="f['apellido']?.touched && f['apellido']?.invalid" class="alert alert-danger">
-            <div *ngIf="f['apellido'].errors?.['required']">Apellido es requerido</div>
-          </div>
-          <small class="text-success" *ngIf="f['apellido'].valid">Correct</small>
-
-        </div>
-
-        <button type="submit" blocked class=" btn-block mt-2 btn btn-success">Crear cliente</button>
-
-      </form>
-
-
-      <form [formGroup]="cliente" (ngSubmit)="editCliente()" *ngIf="editMode">
+      <!-- *ngIf="createMode" -->
+      <form [formGroup]="cliente" (ngSubmit)="createMode ? createCliente() : editCliente()" >
 
         <div class="form-group">
           <label for="exampleInputEmail1">Nombre:</label>
@@ -66,8 +35,9 @@
 
         </div>
 
-        <button type="submit"  class=" btn-block mt-2 btn btn-info">Editar cliente</button>
-        <button type="submit"  (click)="setCreateMode()" class=" btn-block mt-2 btn btn-light">Volver</button>
+        <button *ngIf="createMode" type="submit" blocked class=" btn-block mt-2 btn btn-success">Crear cliente</button>
+        <button *ngIf="editMode" type="submit"  class=" btn-block mt-2 btn btn-info">Editar cliente</button>
+        <button *ngIf="editMode" type="submit"  (click)="setCreateMode()" class=" btn-block mt-2 btn btn-light">Volver</button>
 
       </form>
 

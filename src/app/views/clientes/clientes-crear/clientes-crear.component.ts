@@ -46,10 +46,12 @@ export class ClientesCrearComponent {
       this.editMode = true;
       this.createMode = false;
       this.setClientToEdit(this.clienteEditado);
+      this.message = "";
     }else{
       console.log("2. Modo crear ON")
       this.editMode = false;
       this.createMode = true;
+      this.message = "";
     }
 }
 
@@ -68,10 +70,14 @@ export class ClientesCrearComponent {
   setClientToEdit(clienteEditado: Cliente){
     //console.log("Seteando cliente: " + JSON.stringify(clienteEditado));
     this.clienteIdEditado = clienteEditado.id;
-    this.cliente = this.formBuilder.group({
-      nombre: clienteEditado.nombre,
-      apellido: clienteEditado.apellido,
-    });
+    // this.cliente = this.formBuilder.group({
+    //   nombre: clienteEditado.nombre,
+    //   apellido: clienteEditado.apellido,
+    // });
+
+    this.cliente.controls['nombre'].patchValue(clienteEditado.nombre);
+    this.cliente.controls['apellido'].patchValue(clienteEditado.apellido);
+
   }
 
   createForm() {
@@ -116,7 +122,7 @@ export class ClientesCrearComponent {
       );
     } else {
       this.validateAllFormFields(this.cliente); // llamado a función para validar una vez hecho Submit
-      console.error('vino form is in an invalid state');
+      console.error('Formulario es inválido');
     }
   }
 
